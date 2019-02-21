@@ -1,22 +1,22 @@
-import React, { Component, useState, useEffect } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import Nav from "./Nav";
-import PaintingGrid, { Painting } from "./PaintingGrid/PaintingGrid";
-import mockedPaintings from "./mocks/paintings.json";
+import Home from "./Home/Home";
+import Paintings from "./Paintings/Paintings";
+import About from "./About/About";
 
-const App = () => {
-  const [paintings, setPaintings] = useState<Painting[]>([]);
-
-  useEffect(() => setPaintings(mockedPaintings.slice(0, 6)), []);
-
-  return (
+const App: React.StatelessComponent = () => (
+  <Router>
     <div className="App">
       <header>
         <Nav />
-        <PaintingGrid paintings={paintings} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/paintings" component={Paintings} />
       </header>
     </div>
-  );
-};
+  </Router>
+);
 
 export default App;
