@@ -1,17 +1,22 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import "./App.css";
 import Nav from "./Nav";
+import PaintingGrid, { Painting } from "./PaintingGrid/PaintingGrid";
+import mockedPaintings from "./mocks/paintings.json";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header>
-          <Nav />
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [paintings, setPaintings] = useState<Painting[]>([]);
+
+  useEffect(() => setPaintings(mockedPaintings), []);
+
+  return (
+    <div className="App">
+      <header>
+        <Nav />
+        <PaintingGrid paintings={paintings} />
+      </header>
+    </div>
+  );
+};
 
 export default App;
