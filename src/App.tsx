@@ -7,7 +7,7 @@ import mockedPaintings from "./mocks/paintings.json";
 const App = () => {
   const [paintings, setPaintings] = useState<Painting[]>([]);
 
-  useEffect(() => setPaintings(mockedPaintings), []);
+  useEffect(() => setPaintings(mockedPaintings.slice(0, 6)), []);
 
   return (
     <div className="App">
